@@ -7,7 +7,7 @@ from django.contrib.auth import login, authenticate, logout
 # Create your views here.
 # from . import signals
 from .models import *
-from .tasks import demo_task
+# from .tasks import demo_task
 import time
 from django.db.models import Count, Prefetch
 from django.db.models.functions import TruncMonth
