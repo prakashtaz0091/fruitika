@@ -1,0 +1,30 @@
+{% comment %} {% extends 'app/base.html' %} {% endcomment %}
+
+{% comment %} {% block title %}
+  Login
+{% endblock %} {% endcomment %}
+
+{% comment %} {% block content %}
+  {% endcomment %}
+
+  {% if messages %}
+    {% for message in messages %}
+      <div style="color:red">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  {% comment %} <form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Login</button>
+  </form> {% endcomment %}
+  {% comment %}
+{% endblock %} {% endcomment %}
+
+<form action="" method="post">
+  {% csrf_token %}
+  <input type="text" name="email" placeholder="xyz@gmail.com" />
+  <input type="password" name="password" id="" />
+
+  <button type="submit">Login</button>
+</form>

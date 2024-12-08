@@ -1,0 +1,20 @@
+{% load humanize %}
+<div class="card mb-3">
+  {% if blog.images.all %}
+    <div class="d-flex justify-content-between">
+      {% for image in blog.images.all %}
+        <div class="img" style="height: 300px; width: 100%; margin: 3px;">
+          <img src="{{ MEDIA_URL }} {{ image.image.url }}" class="card-img-top" alt="no image" style="width: inherit; height: inherit;  object-fit: cover;" />
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="card-body">
+    <h5 class="card-title">{{ blog.title }}</h5>
+    <p class="card-text">{{ blog.body }}</p>
+    <p class="card-text">
+      <small class="text-muted">{{ blog.created_at|naturaltime }} by {{ request.user }}</small>
+    </p>
+  </div>
+</div>

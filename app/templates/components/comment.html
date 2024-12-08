@@ -1,0 +1,38 @@
+{% load static %}
+{% load humanize %}
+<style>
+  .comment-replies {
+    cursor: pointer;
+  }
+  .comment-replies:hover {
+    text-decoration: underline;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+<div class="single-comment-body">
+  <div class="comment-user-avater">
+    {% if comment.author.profile_pic %}
+      <img src="{{ MEDIA_URL }} {{ comment.author.profile_pic.url }}" alt="No avatar" />
+    {% else %}
+      <img src="{% static 'app/assets/img/defaults/user_default.webp' %}" alt="No avatar" />
+    {% endif %}
+  </div>
+  <div class="comment-text-body">
+    <h4>
+      {{ comment.author.email }} <span class="comment-date">{{ comment.created_at|naturaltime }} | <span class="comment-replies" data-commentid="{{ comment.id }}">{{ comment.replies_count }} replies</span></span> <small onclick="addReply({{ comment.id }}, event)" class="reply-btn">reply</small>
+      <small onclick="hideReplyForm(event)" class="hidden cancel-btn">cancel</small>
+    </h4>
+    <p>{{ comment.body }}</p>
+
+    <form method="POST" class="hidden reply-form">
+      {% csrf_token %}
+      <input type="hidden" name="comment_id" id="comment_id" value="{{ comment.id }}" />
+      <input type="text" name="reply" id="reply" />
+      <button id="reply_submit">Reply</button>
+    </form>
+
+    <div class="replies-box" data-commentid="{{ comment.id }}"></div>
+  </div>
+</div>
