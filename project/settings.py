@@ -20,10 +20,10 @@ import dj_database_url
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vq3ylg=bg4nraro71^78j!3^krp)xt1z@0@v#-i3hrl0ojd@i%'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
