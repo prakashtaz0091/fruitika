@@ -147,6 +147,8 @@ USE_TZ = True
 import os
 # STATIC_URL = 'static/'
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     
