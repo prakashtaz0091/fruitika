@@ -29,6 +29,7 @@ env = environ.Env(
 )
 
 SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "@&h$=_a4(s%y#hzy*!ej=n_%4*91yr+76()j$38stci!3u__p("
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
