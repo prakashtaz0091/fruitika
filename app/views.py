@@ -268,8 +268,11 @@ def blog(request):
         blog_images = request.FILES.getlist("blog_images")
 
         if blog_form.is_valid():
-            blog = Blog(**blog_form.cleaned_data)
+            blog = Blog()
             blog.author = request.user
+            blog.title = blog_form.cleaned_data['title']
+            blog.body = blog_form.cleaned_data['body']
+            blog.tags.set(blog_form.cleaned_data['tags'])
             blog.save()
             print(blog.title)
             messages.success(request, "Blog has been created")
