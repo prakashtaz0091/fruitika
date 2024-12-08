@@ -23,13 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 import environ
 
+# Reading the .env file
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
-SECRET_KEY = "@&h$=_a4(s%y#hzy*!ej=n_%4*91yr+76()j$38stci!3u__p("
+# SECRET_KEY = "@&h$=_a4(s%y#hzy*!ej=n_%4*91yr+76()j$38stci!3u__p("
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
