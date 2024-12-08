@@ -23,9 +23,9 @@ import dj_database_url
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["https://fruitika.onrender.com"]
+ALLOWED_HOSTS = ["https://fruitika.onrender.com", "*"]
 
 
 # Application definition
@@ -38,9 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    # "debug_toolbar",
     'django.contrib.humanize',
-    'background_task',
 
 ]
 
@@ -57,11 +55,11 @@ MIDDLEWARE = [
     # 'app.middlewares.SimpleMiddleware',
 ]
 
-INTERNAL_IPS = [
-    # ...
-    "127.0.0.1",
-    # ...
-]
+# INTERNAL_IPS = [
+#     # ...
+#     "127.0.0.1",
+#     # ...
+# ]
 
 ROOT_URLCONF = 'project.urls'
 
@@ -81,12 +79,12 @@ TEMPLATES = [
     },
 ]
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgresql://postgres:postgres@localhost:5432/mysite',
+#         conn_max_age=600
+#     )
+# }
 
 
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -100,15 +98,6 @@ AUTH_USER_MODEL = 'app.CustomUser'
 
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
@@ -135,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
@@ -148,11 +137,9 @@ import os
 # STATIC_URL = 'static/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -163,19 +150,3 @@ MEDIA_URL = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-# import environ
-# import os
-
-# env = environ.Env(
-#     # set casting, default value
-#     DEBUG=(bool, False)
-# )
-
-# #email configuration
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'your_email'
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
