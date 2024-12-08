@@ -79,12 +79,12 @@ TEMPLATES = [
     },
 ]
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default='postgresql://postgres:postgres@localhost:5432/mysite',
-#         conn_max_age=600
-#     )
-# }
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://postgres:postgres@localhost:5432/project',
+        conn_max_age=600
+    )
+}
 
 
 WSGI_APPLICATION = 'project.wsgi.application'
